@@ -1,0 +1,37 @@
+:root { --theme-bg: #eef1fb; --theme-surface: rgba(255,255,255,.72); --theme-card: #ffffff; --theme-text: #10243a; --theme-muted: #718095; --theme-primary: #102a43; --theme-border: #dfe3ea; --theme-soft: #f3f6fb; }
+
+.theme-dark { --theme-bg: #111318; --theme-surface: rgba(25,28,35,.94); --theme-card: #1b1f27; --theme-text: #f4f7fb; --theme-muted: #a5afbd; --theme-primary: #f2f5f8; --theme-border: #343b48; --theme-soft: #242a34; }
+.theme-midnight { --theme-bg: #080b18; --theme-surface: rgba(13,18,38,.95); --theme-card: #121936; --theme-text: #edf2ff; --theme-muted: #a8b4d4; --theme-primary: #edf2ff; --theme-border: #2b3760; --theme-soft: #1b2446; }
+.theme-ocean { --theme-bg: #e9f8fb; --theme-surface: rgba(238,252,255,.94); --theme-card: #ffffff; --theme-text: #073447; --theme-muted: #5f7d88; --theme-primary: #07546b; --theme-border: #c5e2e9; --theme-soft: #e9f7fa; }
+.theme-aurora { --theme-bg: #f5efff; --theme-surface: rgba(255,251,255,.94); --theme-card: #ffffff; --theme-text: #2e1e49; --theme-muted: #77668d; --theme-primary: #5a2d82; --theme-border: #e1d3ef; --theme-soft: #f4ecfb; }
+
+.shell.theme-dark, .shell.theme-midnight { background: var(--theme-surface); color: var(--theme-text); }
+.shell.theme-ocean, .shell.theme-aurora, .shell.theme-light { background: var(--theme-surface); color: var(--theme-text); }
+.shell.theme-dark .app-topbar, .shell.theme-midnight .app-topbar { background: rgba(17,20,27,.94); color: var(--theme-text); }
+.shell.theme-ocean .app-topbar, .shell.theme-aurora .app-topbar { background: rgba(255,255,255,.92); }
+.theme-dark .app-topbar, .theme-midnight .app-topbar, .theme-dark .search-box, .theme-midnight .search-box, .theme-dark .vlog-banner, .theme-midnight .vlog-banner, .theme-dark .state-video, .theme-midnight .state-video, .theme-dark .detail-card, .theme-midnight .detail-card, .theme-dark .video-card, .theme-midnight .video-card, .theme-dark .booking-card, .theme-midnight .booking-card, .theme-dark .form-card, .theme-midnight .form-card, .theme-dark .history-row, .theme-midnight .history-row, .theme-dark .booking-history, .theme-midnight .booking-history, .theme-dark .profile-stats, .theme-midnight .profile-stats, .theme-dark .profile-card, .theme-midnight .profile-card, .theme-dark .empty-row, .theme-midnight .empty-row, .theme-dark .theme-option, .theme-midnight .theme-option { background: var(--theme-card); color: var(--theme-text); border-color: var(--theme-border); }
+.theme-dark input, .theme-midnight input { color: var(--theme-text); }
+.theme-dark .bottom-nav, .theme-midnight .bottom-nav { background: rgba(17,20,27,.96); border-color: var(--theme-border); }
+.theme-dark .bottom-nav button, .theme-midnight .bottom-nav button { color: var(--theme-muted); }
+.theme-dark .bottom-nav button.active, .theme-midnight .bottom-nav button.active { color: var(--theme-text); }
+.theme-dark .bottom-nav .add-button, .theme-midnight .bottom-nav .add-button { background: var(--theme-text); color: #10131a; }
+.theme-dark .primary-button, .theme-midnight .primary-button { background: var(--theme-text); color: #10131a; }
+.theme-ocean .primary-button { background: #07546b; color: white; }
+.theme-aurora .primary-button { background: #5a2d82; color: white; }
+.theme-dark .profile-stats button, .theme-midnight .profile-stats button { color: var(--theme-text); }
+.profile-stats button { border: 0; background: transparent; color: #10243a; display: grid; justify-items: center; gap: 3px; cursor: pointer; }
+.profile-click-row { width: 100%; border: 0; cursor: pointer; text-align: left; }
+.booking-route-fields { display: grid; grid-template-columns: 1fr 22px 1fr; align-items: end; gap: 8px; }
+.booking-route-fields label { min-width: 0; }
+.booking-route-arrow { align-self: center; text-align: center; font-weight: 800; color: rgba(255,255,255,.65); }
+.theme-panel { padding-bottom: 10px; }
+.theme-caption { margin: 0 0 10px; color: var(--theme-muted); font-size: 10px; line-height: 1.45; }
+.theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.theme-option { min-height: 66px; display: grid; grid-template-columns: 25px 1fr 18px; align-items: center; gap: 7px; padding: 9px 10px; border: 1px solid #dfe3ea; border-radius: 14px; background: #fff; color: #183149; text-align: left; }
+.theme-option span { font-size: 20px; }
+.theme-option strong { font-size: 10px; }
+.selected-theme { border-color: #102a43; box-shadow: 0 0 0 2px rgba(16,42,67,.08); }
+.theme-dark .selected-theme, .theme-midnight .selected-theme { border-color: #f2f5f8; box-shadow: 0 0 0 2px rgba(242,245,248,.1); }
+.theme-ocean .selected-theme { border-color: #07546b; }
+.theme-aurora .selected-theme { border-color: #5a2d82; }
+@media(max-width:520px) { .booking-route-fields { grid-template-columns: 1fr; } .booking-route-arrow { display: none; } .theme-grid { grid-template-columns: 1fr 1fr; } }
