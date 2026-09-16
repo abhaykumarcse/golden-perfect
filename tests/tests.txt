@@ -1,0 +1,72 @@
+# Tests
+
+## Test 1 - Plot an India road route on the premium Earth map [sanity]
+Viewport: mobile
+Covers: India-only geocoding, duplicate-stop removal, real Leaflet road map, zoom/pan/touch gestures, clickable route markers, OSRM route geometry, road distance/time facts, shortest practical order, live-traffic handoff
+Description: Verifies the core map workflow accepts Indian stops, maps them on the world globe, and shows route facts without duplicate stops.
+Steps:
+1. Open Trips and open the 3D Journey tab
+2. Enter "Delhi, Agra, Jaipur, Udaipur" in the Stops field
+3. Tap "Show route on 3D Earth"
+4. Drag the Earth and pause auto rotation
+5. Tap "Find shortest route"
+Expected: A real India road map loads, numbered unique stops appear, the route follows road geometry, users can zoom/pan/touch the map and tap markers for place details, road distance/time facts appear, the optimized order contains no duplicate stop, and the Live traffic control opens current Google traffic instead of pretending static map data is live traffic.
+
+## Test 2 - Keep group expenses separate for each trip and calculate settlement
+Viewport: mobile
+Covers: trip-specific split storage, visual expense cards, INR amounts, add/remove expense, settlement calculation, mark-settled state
+Description: Verifies Group Split keeps its existing expense-card design while separating expenses by selected trip and making Calculate who owes whom produce a visible result without mixing trips.
+Setup:
+1. Save two trip plans in Trips named "Delhi → Patna" and "Delhi → Jaipur"
+Steps:
+1. Open Group Split
+2. Select "Delhi → Patna"
+3. Add "Rahul" with ₹600 Food and "Amit" with ₹1,200 Stay
+4. Tap "Calculate who owes whom"
+5. Tap "Mark settled" on a settlement
+6. Select "Delhi → Jaipur"
+Expected: The Patna expenses and settlement remain tied to Patna, switching to Jaipur does not mix the groups, and the selected settlement changes to a visible Settled state.
+
+## Test 3 - Save, open, edit, and delete content inside a named memory section
+Viewport: mobile
+Covers: named memory creation, trip association, grouped rich content, section open/close, content update, double-confirm deletion, durable local persistence
+Description: Verifies saved content is grouped under the user-entered place or memory name and can be edited or deleted safely.
+Steps:
+1. Open My Notes and select a trip
+2. Enter "Varanasi" as Place / Memory Name and save "Hotel check-in after 2 PM"
+3. Save "Buy local SIM" under the same Varanasi name
+4. Tap the "Varanasi" section and verify both items are inside it
+5. Tap Edit on "Buy local SIM", change its content, and save the update
+6. Tap Delete on that item and complete both confirmation prompts
+7. Refresh the page
+Expected: The Varanasi section is visible as a collapsed section after saving, no inner content is shown before tapping it, tapping Varanasi reveals the saved items, the deleted item is gone after both confirmations, and the remaining content persists after refresh.
+
+## Test 5 - Complete rich My Travel Notes and clear history safely
+Viewport: mobile
+Covers: Smart Input, trip selector, date/time metadata, photo capture, location picker and map preview, checklist with interactive checkboxes, multi-item expense entry with automatic total and itemized breakdown, activity linking, named sections, section rename, type-specific detail view, double-confirm content deletion, double-confirm clear-all history
+Description: Verifies the complete Notes experience remains available while all saved content is organized by place or memory name and destructive actions require two confirmations.
+Steps:
+1. Open My Notes and select a planned trip
+2. Enter "Varanasi" as Place / Memory Name
+3. Tap Add Photo, select an image, and verify it appears under Varanasi
+4. Tap Tag Location, search an Indian place, select it, and save
+5. Tap Start Checklist, create three items, and toggle one checkbox
+6. Tap Log Expense, save 250 INR as Food
+7. Tap Link Activity, enter "Ganga Aarti", choose a date/time, add a location, duration and a short instruction, then save
+8. Open the Varanasi section and verify all saved content is grouped inside it
+9. Edit a saved item and verify the changed content is shown
+10. Delete a saved item and complete both confirmation prompts
+11. Tap Clear All Notes History and complete both confirmation prompts
+Expected: Rich content is grouped under the named section, all section contents stay hidden until that section is tapped, tapping the section reveals the saved content, the saved activity card stays compact and tapping it reveals its name, date/time, location, duration and instruction details; locations remain clickable for map opening, edits persist, individual deletion requires two confirmations, and the dedicated clear-history action removes all saved Notes history only after two confirmations.
+## Test 4 - Check road reality and date/time weather at every stop
+Viewport: desktop
+Covers: visual stops-in-order box, timing box, preserved road-wise distance/time calculation, date/time-specific weather forecast, per-stop weather cards, forecast-window failure handling
+Description: Verifies Reality Check separates itinerary presentation from the existing road calculation and asks for a travel date and time before checking forecast conditions.
+Steps:
+1. Open Reality Check
+2. Enter "Delhi, Agra, Jaipur"
+3. Set 60 minutes per transfer
+4. Tap "Check road time"
+5. Choose a future date within the forecast window and a time such as 09:00
+6. Tap "Check weather for this date & time"
+Expected: Stops appear in a clean numbered box, transfer timing is shown in a dedicated box, road legs retain kilometers and minutes with Fits window or Buffer needed, and each stop shows weather, temperature and rain probability for the selected date/time; minute selections are matched to the nearest available hourly forecast instead of failing on values such as 03:15, while out-of-range dates produce a clear retry message rather than fake data.
