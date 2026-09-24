@@ -1,6 +1,8 @@
 # ✈️ Golden Perfect
 
-> **A premium travel planning experience for exploring India, planning journeys, saving memories, and managing travel bookings.**
+> **A premium India travel planner for discovering destinations, planning journeys, saving memories, managing bookings, and organizing private travel notes.**
+>
+> 🌐 **Live App:** https://golden-perfect-36uq3l.v2.appdeploy.ai/
 
 <p align="center">
   <a href="https://golden-perfect-36uq3l.v2.appdeploy.ai/"><strong>🌐 Open Live App</strong></a>
