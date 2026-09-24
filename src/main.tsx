@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import './index.css';
 import './themes.css';
+import './extra-themes.css';
 
 type BoundaryProps = { children: React.ReactNode };
 type BoundaryState = { failed: boolean };
