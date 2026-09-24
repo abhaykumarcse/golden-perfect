@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Create and retain a My Travel Note",
+    "sanity": true,
+    "viewport": "mobile",
+    "covers": ["My Travel Notes creation", "per-user database persistence", "persistence after reload"],
+    "description": "Verifies a signed-in user's travel note is saved through the protected backend and remains visible after reload.",
+    "steps": ["Sign in to Golden Perfect", "Open My Travel Notes", "Create a place named Patna if it does not exist", "Enter a note titled Weekend at Patna and save it", "Reload the app and reopen My Travel Notes"],
+    "expected": "The note remains visible for the signed-in user after reload."
+  },
+  {
+    "name": "Add more than 21 places without a count cap",
+    "viewport": "desktop",
+    "covers": ["place creation beyond 21 records", "per-user place database persistence"],
+    "description": "Verifies the My Travel Notes place collection can continue beyond the previously observed 21-place stopping point.",
+    "steps": ["Sign in to Golden Perfect", "Open My Travel Notes", "Add places until the account has at least 22 places", "Reload My Travel Notes"],
+    "expected": "The 22nd place is created and remains visible after reload."
+  },
+  {
+    "name": "Keep legacy browser data during one-time migration",
+    "viewport": "desktop",
+    "covers": ["legacy data migration", "existing note preservation", "existing photo preservation", "migration without deletion"],
+    "description": "Verifies existing account data is preserved while migration does not copy one account's local cache into another account.",
+    "setup": ["Use an account that already has saved cloud travel notes and places"],
+    "steps": ["Sign in to Golden Perfect", "Open My Travel Notes", "Reload the app", "Sign out and sign in with a different email"],
+    "expected": "The second email sees only its own cloud places and notes; the first account's place records are not copied into the second account."
+  },
+  {
+    "name": "Upload a place image and show it immediately",
+    "viewport": "desktop",
+    "covers": ["file storage upload", "place image display", "per-user place data"],
+    "description": "Verifies a new travel place with an image persists the file in storage and renders it on the place card.",
+    "steps": ["Sign in to Golden Perfect", "Open My Travel Notes", "Tap Add Place", "Enter Jaipur and choose a local image", "Create the place"],
+    "expected": "Jaipur appears in the signed-in account and its uploaded image is visible on the place card."
+  },
+  {
+    "name": "Reject note changes when not authenticated",
+    "viewport": "mobile",
+    "covers": ["authentication boundary", "private data protection", "invalid write guardrail"],
+    "description": "Verifies notes cannot be written to the shared backend without a signed-in identity.",
+    "steps": ["Sign out of Golden Perfect", "Open My Travel Notes", "Try to add a place or save a note"],
+    "expected": "The app asks the user to sign in and no shared note or place is created."
+  }
+]
