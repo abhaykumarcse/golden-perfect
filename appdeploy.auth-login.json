@@ -1,0 +1,14 @@
+{
+  "methods": ["google", "apple", "x"],
+  "headline": "Sign in to Golden Perfect",
+  "subtitle": "Save places, plan trips and manage bookings.",
+  "style": {
+    "mode": "light",
+    "accentColor": "#e98b55",
+    "backgroundColor": "#eef1fb",
+    "panelColor": "#ffffff",
+    "textColor": "#10243a",
+    "fontFamily": "DM Sans, system-ui, sans-serif",
+    "borderRadius": 16
+  }
+}
