@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { X, Plus, Check, MapPin, Sparkles, GripVertical, Trash2, CalendarDays, Clock3, ImagePlus, ReceiptText, Link2 } from 'lucide-react';
+import AdSlot from './AdSlot';
 import './focused.css';
 type Mode = 'location'|'photo'|'checklist'|'expense'|'activity'|'note'|'summary';
 type P = { id:string; name:string; location:string };
@@ -28,7 +29,7 @@ export default function FocusedTravelTool({mode,place,onClose,onSaveNote,onSaveL
  const toggleCheck=(i:number)=>setChecks(checks.map((x,j)=>j===i?{...x,done:!x.done}:x));
  const moveCheck=(i:number,dir:number)=>{const j=i+dir;if(j<0||j>=checks.length)return;const n=[...checks];[n[i],n[j]]=[n[j],n[i]];setChecks(n)};
  return <div className='travel-notes-modal-backdrop' onClick={onClose}><section className='travel-focused-modal reference-exact-modal' onClick={e=>e.stopPropagation()}>
- <header className='travel-focused-header'><div><strong>{title}</strong><small>{place?.name} · Travel Notes</small></div><button onClick={onClose}><X size={20}/></button></header>
+ <header className='travel-focused-header'><div><strong>{title}</strong><small>{place?.name} · Travel Notes</small></div><button onClick={onClose}><X size={20}/></button></header><AdSlot slot='Trip Planner' />
  {mode==='summary'?<div className='travel-summary-content'><div className='travel-summary-total'><span>Total Trip Spend in {place?.name}</span><strong>₹{total.toLocaleString('en-IN')}</strong></div><div className='travel-summary-card'><strong>Day-wise Summary</strong>{[...new Set(ex.map(e=>e.day))].sort((a,b)=>a-b).map(d=><button key={d} onClick={()=>setDay(d)}>Day {d}<b>₹{ex.filter(e=>e.day===d).reduce((s,e)=>s+e.amount*(RATE[e.currency]||1),0).toLocaleString('en-IN')}</b></button>)}</div><div className='travel-summary-card'><strong>Person-wise Summary</strong>{[...new Set(ex.map(e=>e.person))].map(p=><div key={p}>{p}<b>₹{ex.filter(e=>e.person===p).reduce((s,e)=>s+e.amount*(RATE[e.currency]||1),0).toLocaleString('en-IN')}</b></div>)}</div><div className='travel-summary-card'><strong>Detailed Expenses</strong>{ex.map(e=><div key={e.id}>Day {e.day} · {e.person} · {e.item}<b>{e.currency} {e.amount}</b></div>)}</div></div>:
  <div className='travel-focused-body'>
  {mode!=='note'&&mode!=='activity'&&<div className='reference-top-fields'><label>Date<input type='text' value={date} onChange={e=>setDate(e.target.value)}/></label><label>Time<select value={time} onChange={e=>setTime(e.target.value)}><option value={now.time}>current</option><option>09:00 AM</option><option>12:00 PM</option><option>02:00 PM</option><option>06:00 PM</option><option>08:00 PM</option></select></label></div>}
