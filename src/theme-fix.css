@@ -1,0 +1,200 @@
+/* Golden Perfect — unified theme/globe styling.
+   The theme-* class and .shell live on the same root element, so selectors
+   intentionally use .shell.theme-* instead of .theme-* .shell. */
+
+:root {
+  --globe-atmosphere: #2fcde3;
+  --globe-space: #01050c;
+  --globe-route: #67f5ff;
+  --globe-route-glow: #25e7ff;
+  --globe-india-fill: #67dff2;
+  --globe-india-line: #b8f5ff;
+}
+
+/* 25 theme-specific globe palettes */
+.shell.theme-light {
+  --globe-atmosphere: #59cce0;
+  --globe-space: #203746;
+  --globe-route: #087e9c;
+  --globe-route-glow: #24bad6;
+  --globe-india-fill: #37a8ba;
+  --globe-india-line: #e4ffff;
+}
+.shell.theme-dark,
+.shell.theme-midnight,
+.shell.theme-cyber,
+.shell.theme-nebula,
+.shell.theme-royal,
+.shell.theme-graphite,
+.shell.theme-emerald,
+.shell.theme-crimson,
+.shell.theme-volcano,
+.shell.theme-slate,
+.shell.theme-mono {
+  --globe-atmosphere: #35cfe7;
+  --globe-space: #01050b;
+  --globe-route: #70efff;
+  --globe-route-glow: #21dfff;
+  --globe-india-fill: #6ce8f7;
+  --globe-india-line: #cffaff;
+}
+.shell.theme-ocean,
+.shell.theme-peacock,
+.shell.theme-mint,
+.shell.theme-arctic {
+  --globe-atmosphere: #55deef;
+  --globe-space: #021018;
+  --globe-route: #83f4ff;
+  --globe-route-glow: #34e5f5;
+  --globe-india-fill: #78edf4;
+  --globe-india-line: #d1feff;
+}
+.shell.theme-aurora,
+.shell.theme-lavender,
+.shell.theme-sakura,
+.shell.theme-berry {
+  --globe-atmosphere: #b07cff;
+  --globe-space: #05030e;
+  --globe-route: #c9a5ff;
+  --globe-route-glow: #9e6cff;
+  --globe-india-fill: #b594ff;
+  --globe-india-line: #eee4ff;
+}
+.shell.theme-sunset,
+.shell.theme-coral,
+.shell.theme-amber,
+.shell.theme-sand {
+  --globe-atmosphere: #ffad67;
+  --globe-space: #0e0705;
+  --globe-route: #ffd36d;
+  --globe-route-glow: #ff9e4d;
+  --globe-india-fill: #ffc77d;
+  --globe-india-line: #fff0c9;
+}
+.shell.theme-forest {
+  --globe-atmosphere: #51d59a;
+  --globe-space: #020905;
+  --globe-route: #6df7b1;
+  --globe-route-glow: #22dc8a;
+  --globe-india-fill: #6eeab0;
+  --globe-india-line: #d6ffea;
+}
+
+/* 20 extra themes: complete app chrome/card/button variables */
+.shell.theme-nebula {
+  --theme-bg: #08071a;
+  --theme-surface: rgba(23,16,44,.94);
+  --theme-card: #17102c;
+  --theme-text: #f4edff;
+  --theme-muted: #b8a8d5;
+  --theme-primary: #c9a5ff;
+  --theme-border: #49366c;
+  --theme-soft: #251a42;
+}
+.shell.theme-sakura {
+  --theme-bg: #fff0f5;
+  --theme-surface: rgba(249,217,231,.94);
+  --theme-card: #fff8fb;
+  --theme-text: #4b2638;
+  --theme-muted: #8d6375;
+  --theme-primary: #b84f79;
+  --theme-border: #edbfd0;
+  --theme-soft: #fde8f0;
+}
+.shell.theme-emerald {
+  --theme-bg: #071c18;
+  --theme-surface: rgba(11,58,45,.94);
+  --theme-card: #103d31;
+  --theme-text: #e8fff5;
+  --theme-muted: #9ec8b9;
+  --theme-primary: #62e6ad;
+  --theme-border: #2e725d;
+  --theme-soft: #194c3d;
+}
+.shell.theme-sunset {
+  --theme-bg: #35151b;
+  --theme-surface: rgba(141,62,49,.94);
+  --theme-card: #65352f;
+  --theme-text: #fff4e8;
+  --theme-muted: #e7b8a3;
+  --theme-primary: #ffd36d;
+  --theme-border: #a95c4b;
+  --theme-soft: #7a4035;
+}
+.shell.theme-royal {
+  --theme-bg: #0b0a21;
+  --theme-surface: rgba(33,22,80,.95);
+  --theme-card: #25195b;
+  --theme-text: #f4efff;
+  --theme-muted: #b5a6dc;
+  --theme-primary: #c9a5ff;
+  --theme-border: #58428c;
+  --theme-soft: #33246e;
+}
+.shell.theme-cyber {
+  --theme-bg: #02070a;
+  --theme-surface: rgba(8,44,49,.95);
+  --theme-card: #0c3035;
+  --theme-text: #e6ffff;
+  --theme-muted: #8fc9cc;
+  --theme-primary: #43e0f8;
+  --theme-border: #1c6570;
+  --theme-soft: #10454c;
+}
+.shell.theme-graphite {
+  --theme-bg: #111315;
+  --theme-surface: rgba(41,45,49,.96);
+  --theme-card: #24282c;
+  --theme-text: #f3f5f6;
+  --theme-muted: #a8afb5;
+  --theme-primary: #d7dde2;
+  --theme-border: #4b5258;
+  --theme-soft: #30353a;
+}
+.shell.theme-lavender {
+  --theme-bg: #211735;
+  --theme-surface: rgba(85,65,110,.94);
+  --theme-card: #3f3155;
+  --theme-text: #faf3ff;
+  --theme-muted: #c3b3d1;
+  --theme-primary: #d8b8f5;
+  --theme-border: #75618b;
+  --theme-soft: #514064;
+}
+.shell.theme-sand {
+  --theme-bg: #2d2117;
+  --theme-surface: rgba(113,83,53,.94);
+  --theme-card: #6d5035;
+  --theme-text: #fff5e5;
+  --theme-muted: #d6bd9d;
+  --theme-primary: #f1c27d;
+  --theme-border: #98744e;
+  --theme-soft: #805f3e;
+}
+.shell.theme-crimson {
+  --theme-bg: #24070b;
+  --theme-surface: rgba(99,21,30,.95);
+  --theme-card: #5c1822;
+  --theme-text: #fff0f2;
+  --theme-muted: #d7a4ac;
+  --theme-primary: #ff7182;
+  --theme-border: #913846;
+  --theme-soft: #75232e;
+}
+.shell.theme-forest {
+  --theme-bg: #061b12;
+  --theme-surface: rgba(14,58,42,.95);
+  --theme-card: #123f2e;
+  --theme-text: #edfff5;
+  --theme-muted: #a3cdb8;
+  --theme-primary: #6df7b1;
+  --theme-border: #32735a;
+  --theme-soft: #1b503b;
+}
+.shell.theme-coral {
+  --theme-bg: #2b1114;
+  --theme-surface: rgba(118,52,55,.95);
+  --theme-card: #6b3034;
+  --theme-text: #fff1ef;
+  --theme-muted: #d9a9a3;
+  --theme-primary: #ff9685;

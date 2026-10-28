@@ -1,0 +1,8 @@
+[
+  {
+    "name": "daily-revenue-estimates",
+    "cron": "5 0 * * *",
+    "handler": "revenueEstimateCron",
+    "timezone": "Asia/Kolkata"
+  }
+]

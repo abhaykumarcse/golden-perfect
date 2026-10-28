@@ -3,42 +3,168 @@
     "name": "Create and retain a My Travel Note",
     "sanity": true,
     "viewport": "mobile",
-    "covers": ["My Travel Notes creation", "per-user database persistence", "persistence after reload"],
+    "covers": [
+      "My Travel Notes creation",
+      "per-user database persistence",
+      "persistence after reload",
+      "3D Journey isolation",
+      "global real-world globe map",
+      "place search fly-to",
+      "road route overlay",
+      "Trip Wrapped generated from saved trips, bookings and notes",
+      "Offline Vault removed",
+      "Trip Wrapped cumulative distance analytics",
+      "Trip Wrapped state-wise distance breakdown",
+      "premium India boundary highlight"
+    ],
     "description": "Verifies a signed-in user's travel note is saved through the protected backend and remains visible after reload.",
-    "steps": ["Sign in to Golden Perfect", "Open My Travel Notes", "Create a place named Patna if it does not exist", "Enter a note titled Weekend at Patna and save it", "Reload the app and reopen My Travel Notes"],
-    "expected": "The note remains visible for the signed-in user after reload."
+    "steps": [
+      "Sign in to Golden Perfect",
+      "Open My Travel Notes",
+      "Create a place named Patna if it does not exist",
+      "Enter a note titled Weekend at Patna and save it",
+      "Reload the app and reopen My Travel Notes",
+      "Open Trip Wrapped and verify its summary uses saved trips, bookings and travel notes",
+      "Open the middle + menu and select 3D Journey",
+      "Search Delhi and set Agra as destination",
+      "Tap a map location and inspect nearby places",
+      "Build the road route and verify it is drawn on the globe"
+    ],
+    "expected": "The note remains visible after reload, Trip Wrapped shows recorded cumulative distance plus state-wise distance and milestone insights, and 3D Journey still opens with its Earth and route controls with India highlighted by the premium boundary."
   },
   {
     "name": "Add more than 21 places without a count cap",
     "viewport": "desktop",
-    "covers": ["place creation beyond 21 records", "per-user place database persistence"],
+    "covers": [
+      "place creation beyond 21 records",
+      "per-user place database persistence"
+    ],
     "description": "Verifies the My Travel Notes place collection can continue beyond the previously observed 21-place stopping point.",
-    "steps": ["Sign in to Golden Perfect", "Open My Travel Notes", "Add places until the account has at least 22 places", "Reload My Travel Notes"],
+    "steps": [
+      "Sign in to Golden Perfect",
+      "Open My Travel Notes",
+      "Add places until the account has at least 22 places",
+      "Reload My Travel Notes"
+    ],
     "expected": "The 22nd place is created and remains visible after reload."
   },
   {
     "name": "Keep legacy browser data during one-time migration",
     "viewport": "desktop",
-    "covers": ["legacy data migration", "existing note preservation", "existing photo preservation", "migration without deletion"],
+    "covers": [
+      "legacy data migration",
+      "existing note preservation",
+      "existing photo preservation",
+      "migration without deletion"
+    ],
     "description": "Verifies existing account data is preserved while migration does not copy one account's local cache into another account.",
-    "setup": ["Use an account that already has saved cloud travel notes and places"],
-    "steps": ["Sign in to Golden Perfect", "Open My Travel Notes", "Reload the app", "Sign out and sign in with a different email"],
+    "setup": [
+      "Use an account that already has saved cloud travel notes and places"
+    ],
+    "steps": [
+      "Sign in to Golden Perfect",
+      "Open My Travel Notes",
+      "Reload the app",
+      "Sign out and sign in with a different email"
+    ],
     "expected": "The second email sees only its own cloud places and notes; the first account's place records are not copied into the second account."
   },
   {
     "name": "Upload a place image and show it immediately",
     "viewport": "desktop",
-    "covers": ["file storage upload", "place image display", "per-user place data"],
+    "covers": [
+      "file storage upload",
+      "place image display",
+      "per-user place data"
+    ],
     "description": "Verifies a new travel place with an image persists the file in storage and renders it on the place card.",
-    "steps": ["Sign in to Golden Perfect", "Open My Travel Notes", "Tap Add Place", "Enter Jaipur and choose a local image", "Create the place"],
+    "steps": [
+      "Sign in to Golden Perfect",
+      "Open My Travel Notes",
+      "Tap Add Place",
+      "Enter Jaipur and choose a local image",
+      "Create the place"
+    ],
     "expected": "Jaipur appears in the signed-in account and its uploaded image is visible on the place card."
   },
   {
     "name": "Reject note changes when not authenticated",
     "viewport": "mobile",
-    "covers": ["authentication boundary", "private data protection", "invalid write guardrail"],
+    "covers": [
+      "authentication boundary",
+      "private data protection",
+      "invalid write guardrail"
+    ],
     "description": "Verifies notes cannot be written to the shared backend without a signed-in identity.",
-    "steps": ["Sign out of Golden Perfect", "Open My Travel Notes", "Try to add a place or save a note"],
+    "steps": [
+      "Sign out of Golden Perfect",
+      "Open My Travel Notes",
+      "Try to add a place or save a note"
+    ],
     "expected": "The app asks the user to sign in and no shared note or place is created."
+  },
+  {
+    "name": "Refresh Trip Wrapped analytics from recorded bookings",
+    "viewport": "mobile",
+    "covers": [
+      "Trip Wrapped refresh interaction",
+      "state-wise distance analytics",
+      "cumulative recorded distance",
+      "download/share actions"
+    ],
+    "description": "Verifies Trip Wrapped turns recorded booking distances into a cumulative travel summary with state-level breakdown and usable refresh/share controls.",
+    "steps": [
+      "Sign in to Golden Perfect",
+      "Open a saved booking that has a road distance and destination state",
+      "Open Trips and select Trip Wrapped",
+      "Tap Refresh Trip Wrapped",
+      "Inspect the Distance Covered So Far, State Breakdown and Travel Insights sections",
+      "Tap Share or Download Wrapped"
+    ],
+    "expected": "Trip Wrapped displays the sum of recorded booking distances, groups distance by destination state, shows longest/average/top-state insights, and the refresh/download/share controls are usable."
+  },
+  {
+    "name": "Submit a partnership request from the public home screen",
+    "viewport": "mobile",
+    "covers": [
+      "public partnership request form",
+      "partnership request validation",
+      "partnership request database submission",
+      "admin review workflow"
+    ],
+    "description": "Verifies a non-admin visitor can submit a partnership request through the app UI for later admin review.",
+    "steps": [
+      "Open the Golden Perfect home screen",
+      "Tap Partner with Golden Perfect",
+      "Enter a brand name and valid contact email",
+      "Submit the partnership request",
+      "Sign in as the authorized admin and open Ad Requests"
+    ],
+    "expected": "The user sees a submission confirmation and the saved request appears at the top of the admin Partnership Requests list under Pending, with brand, contact email, submission date, and working approve/reject actions."
+  },
+  {
+    "name": "Admin publishes an information-only job notification",
+    "viewport": "desktop",
+    "covers": [
+      "admin-only job CRUD",
+      "HTTPS URL validation",
+      "publish and unpublish",
+      "expired jobs hidden publicly",
+      "job view and apply click counters",
+      "public search and category filters",
+      "home latest jobs strip",
+      "Jobs Section ad placement",
+      "shareable job detail deep link"
+    ],
+    "description": "Verifies admins can publish official job links and users can browse and apply externally.",
+    "steps": [
+      "Sign in as abgupta802215@gmail.com",
+      "Open Admin > Jobs and add a job with HTTPS apply link and a future last date",
+      "Publish the job and mark it featured",
+      "Open Jobs from the home Latest Jobs strip",
+      "Search and open the job detail page",
+      "Share the job and tap Apply Now"
+    ],
+    "expected": "The published job appears in the public list and Latest Jobs, its detail includes closing information and disclaimer, Share uses a deep link, Apply Now opens the external HTTPS URL, and draft/expired jobs are not public."
   }
 ]
